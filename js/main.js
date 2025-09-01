@@ -30,22 +30,21 @@ const estudiantesAprobados = (estudiantes) => {
     const promedioNota = sumaNotas / estudiante.notas.length;
     const tr = document.createElement("tr");
     const tdNombre = document.createElement("td");
-    tdNombre.textContent= estudiante.nombre;
+    tdNombre.textContent = estudiante.nombre;
     tdNombre.className = "py-3 px-4 text-center";
     const tdEdad = document.createElement("td");
-    tdEdad.textContent= estudiante.edad;
+    tdEdad.textContent = estudiante.edad;
     tdEdad.className = "py-3 px-4 text-right";
     const tdPais = document.createElement("td");
-    tdPais.textContent=estudiante.pais;
-     tdPais.className = "py-3 px-4 text-center";
+    tdPais.textContent = estudiante.pais;
+    tdPais.className = "py-3 px-4 text-center";
     const tdPromedio = document.createElement("td");
-    tdPromedio.textContent= promedioNota.toFixed(2);
+    tdPromedio.textContent = promedioNota.toFixed(2);
     tdPromedio.className =
-        "py-3 px-4 font-semibold text-right " +
-        (promedioNota >= 70 ? "text-green-600" : "text-yellow-600");
-    
+      "py-3 px-4 font-semibold text-right " +
+      (promedioNota >= 70 ? "text-green-600" : "text-yellow-600");
+
     if (promedioNota > 51) {
-        
       tr.appendChild(tdNombre);
       tr.appendChild(tdEdad);
       tr.appendChild(tdPais);
@@ -54,5 +53,67 @@ const estudiantesAprobados = (estudiantes) => {
     }
   });
 };
-estudiantesAprobados(estudiantes);
+
+
+const estudiantesReprobados = (estudiantes) => {
+  const tbody = document.getElementById("tabla-reprobados-tbody");
+  estudiantes.forEach((estudiante) => {
+    const sumaNotas = estudiante.notas.reduce(
+      (accumulator, currentValue) => accumulator + currentValue
+    );
+    const promedioNota = sumaNotas / estudiante.notas.length;
+    const tr = document.createElement("tr");
+    const tdNombre = document.createElement("td");
+    tdNombre.textContent = estudiante.nombre;
+    tdNombre.className = "py-3 px-4 text-center";
+    const tdEdad = document.createElement("td");
+    tdEdad.textContent = estudiante.edad;
+    tdEdad.className = "py-3 px-4 text-right";
+    const tdPais = document.createElement("td");
+    tdPais.textContent = estudiante.pais;
+    tdPais.className = "py-3 px-4 text-center";
+    const tdPromedio = document.createElement("td");
+    tdPromedio.textContent = promedioNota.toFixed(2);
+    tdPromedio.className =
+      "py-3 px-4 font-semibold text-right " +
+      (promedioNota <= 20 ? "text-red-600" : "text-orange-600");
+
+    if (promedioNota <= 51) {
+      tr.appendChild(tdNombre);
+      tr.appendChild(tdEdad);
+      tr.appendChild(tdPais);
+      tr.appendChild(tdPromedio);
+      tbody.appendChild(tr);
+    }
+  });
+};
+
+const listarEstudiantes = (estudiantes) => {
+  const tbody = document.getElementById("tabla-tbody");
+  estudiantes.forEach((estudiante) => {
+    const tr = document.createElement("tr");
+    const tdNombre = document.createElement("td");
+    tdNombre.textContent = estudiante.nombre;
+    tdNombre.className = "py-3 px-4 text-center";
+    const tdEdad = document.createElement("td");
+    tdEdad.textContent = estudiante.edad;
+    tdEdad.className = "py-3 px-4 text-right";
+    const tdPais = document.createElement("td");
+    tdPais.textContent = estudiante.pais;
+    tdPais.className = "py-3 px-4 text-center";
+
+    tr.appendChild(tdNombre);
+    tr.appendChild(tdEdad);
+    tr.appendChild(tdPais);
+    tbody.appendChild(tr);
+  });
+};
+
+const main = (estudiantes) => {
+  listarEstudiantes(estudiantes);
+  estudiantesAprobados(estudiantes);
+  estudiantesReprobados(estudiantes);
+};
+
+main(estudiantes);
 
