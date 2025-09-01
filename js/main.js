@@ -20,3 +20,39 @@ const estudiantes = [
   { nombre: "Mateo Castillo", edad: 21, pais: "Venezuela", notas: [65, 60, 68] },
   { nombre: "Gabriela Soto", edad: 22, pais: "Paraguay", notas: [99, 97, 100] }
 ];
+
+const estudiantesAprobados = (estudiantes) => {
+  const tbody = document.getElementById("tabla-aprobados-tbody");
+  estudiantes.forEach((estudiante) => {
+    const sumaNotas = estudiante.notas.reduce(
+      (accumulator, currentValue) => accumulator + currentValue
+    );
+    const promedioNota = sumaNotas / estudiante.notas.length;
+    const tr = document.createElement("tr");
+    const tdNombre = document.createElement("td");
+    tdNombre.textContent= estudiante.nombre;
+    tdNombre.className = "py-3 px-4 text-center";
+    const tdEdad = document.createElement("td");
+    tdEdad.textContent= estudiante.edad;
+    tdEdad.className = "py-3 px-4 text-right";
+    const tdPais = document.createElement("td");
+    tdPais.textContent=estudiante.pais;
+     tdPais.className = "py-3 px-4 text-center";
+    const tdPromedio = document.createElement("td");
+    tdPromedio.textContent= promedioNota.toFixed(2);
+    tdPromedio.className =
+        "py-3 px-4 font-semibold text-right " +
+        (promedioNota >= 70 ? "text-green-600" : "text-yellow-600");
+    
+    if (promedioNota > 51) {
+        
+      tr.appendChild(tdNombre);
+      tr.appendChild(tdEdad);
+      tr.appendChild(tdPais);
+      tr.appendChild(tdPromedio);
+      tbody.appendChild(tr);
+    }
+  });
+};
+estudiantesAprobados(estudiantes);
+
