@@ -1,37 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="./css/output.css">
-</head>
-<body>
-    <table class="table-auto">
-  <thead>
-    <tr>
-      <th>Song</th>
-      <th>Artist</th>
-      <th>Year</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-      <td>Malcolm Lockyer</td>
-      <td>1961</td>
-    </tr>
-    <tr>
-      <td>Witchy Woman</td>
-      <td>The Eagles</td>
-      <td>1972</td>
-    </tr>
-    <tr>
-      <td>Shining Star</td>
-      <td>Earth, Wind, and Fire</td>
-      <td>1975</td>
-    </tr>
-  </tbody>
-</table>
-</body>
+    <link rel="stylesheet" href="./css/output.css" />
+    <script src="./js/main.js" defer></script>
+  </head>
+ <!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tabla Estudiantes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="./js/main.js" defer></script>
+  </head>
+  <body class="bg-gray-100 min-h-screen flex items-center justify-center p-6">
+    <div class="w-full max-w-4xl bg-white shadow-lg rounded-2xl overflow-hidden">
+      <h1 class="text-2xl font-bold text-center py-4 text-gray-700">
+        Estudiantes Aprobados
+      </h1>
+      <div class="overflow-x-auto">
+        <table class="min-w-full text-left border border-gray-200">
+          <thead class="bg-gray-200 text-gray-700 uppercase text-sm">
+            <tr>
+              <th class="py-3 px-4 text-center">Nombre</th>
+              <th class="py-3 px-4 text-right">Edad</th>
+              <th class="py-3 px-4 text-center">País</th>
+              <th class="py-3 px-4 text-right">Promedio</th>
+            </tr>
+          </thead>
+          <tbody id="tabla-aprobados-tbody" class="text-gray-600 px-6">
+            
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
 </html>
